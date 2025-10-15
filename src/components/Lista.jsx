@@ -1,17 +1,19 @@
-function Lista ({itens}){
 
-    return(
-        <>
-        <h3>Lista de coisas</h3>
-        {itens.length > 0 ?(
-        itens.map((item, index) => (
-            <p key={index}>{item}</p>
-        ))) : (
-            <p>Não existem itens na Lista</p>
-        )}
-        </>
-    )
-        
+ function Lista({ itens, onExcluir }) {
+  if (itens.length === 0) return <p>Nenhum item encontrado.</p>;
+
+  return (
+    <ul>
+      {itens.map((item, index) => (
+        <li key={index}>
+          {item}
+          <button onClick={() => onExcluir(index)}>
+            Excluir
+          </button>
+        </li>
+      ))}
+    </ul>
+  );
 }
-    
+
 export default Lista;
